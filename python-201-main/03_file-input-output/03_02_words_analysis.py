@@ -31,6 +31,7 @@ for word in new_list:
 
 end = time.time()
 print((end-start)*10**3)
+
 #option 2 for printing shorest words
 
 start = time.time()

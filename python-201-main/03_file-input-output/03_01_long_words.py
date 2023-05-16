@@ -7,6 +7,6 @@ filepath = Path('/Users/13392/documents/codingnomads/python-201-main/03_file-inp
 
 with open(filepath.joinpath('words.txt'),'r') as file_out:
     for word in file_out.read().split(): #QUESTION: why is split() needed here?!
-        print(word)
+        #print(word)
         if len(word) > 20:
             print(word)
