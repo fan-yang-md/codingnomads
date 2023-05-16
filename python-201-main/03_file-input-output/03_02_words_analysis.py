@@ -22,7 +22,7 @@ shortest_words.append(new_list[0])
 
 for word in new_list:
     if len(word) < len(shortest_words[0]):
-        shortest_words = []
+        shortest_words.clear()
         shortest_words.append(word)
         print(word)
     elif len(word) == len(shortest_words[0]):
