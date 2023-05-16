@@ -14,3 +14,18 @@
 # Start with a small folder to make it easy to check whether your program is
 # working correctly. Then search a bigger folder.
 # This program should work for any specified folder on your computer.
+
+from pathlib import Path
+input_folder = input("Enter the name of the folder you want to explore for JPG files: ")
+given_folder = Path(f'/Users/13392/{input_folder}')
+
+for each_item in given_folder.iterdir():
+    if each_item.is_file():
+        if ".jpg" in each_item.name:
+            print(str(given_folder) + ": " + str(each_item.name))
+    elif each_item.is_dir():
+        for sub_item in each_item.iterdir():
+            if sub_item.is_file():
+                if ".jpg" in sub_item.name:
+                    sub_item_path = given_folder.joinpath(each_item)
+                    print(str(sub_item_path) + ": " + str(sub_item.name))
