@@ -8,7 +8,7 @@ def make_sandwich():
     bread = input('What kind of bread? ')
     toppings = input('Now choose your toppings: ')
     topping_list = toppings.split()
-    sandwich = bread + '\n' + '\n'.join(topping_list) + bread
+    sandwich = bread + '\n' + '\n'.join(topping_list) + '\n' + bread
     return sandwich
 
 print(f'Here is your sandwich: \n{make_sandwich()}')

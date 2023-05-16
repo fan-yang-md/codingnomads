@@ -6,6 +6,15 @@
 def say_hello(name):
         return str(f'Hello {name}!')
 
-greeting = say_hello(input('what is your name?'))
+greeting = say_hello(input('what is your name? '))
 
 print(greeting)
+
+""" 
+def greet(greeting="Hi", name="User"):  # Adding defaults
+    sentence = f"{greeting}, {name}! How are you?"
+    return sentence
+
+print(greet())
+print(greet(name="Fievel", greeting="Hello"))
+ """
