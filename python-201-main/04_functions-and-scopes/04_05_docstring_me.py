@@ -3,7 +3,15 @@
 # and what it returns.
 
 def km_to_miles(km):
-    """function converts km to mile"""
+    """_summary_
+
+    Args:
+        km (float): distance in km
+
+    Returns:
+        float: distance in miles
+    """
+    
     miles = km * 0.6
     return miles
 
