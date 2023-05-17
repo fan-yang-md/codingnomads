@@ -7,3 +7,25 @@
 # - call your functions, passing in the user input as the arguments,
 #   and set their output equal to new variables 
 # - print your the result variables with descriptive messages
+
+def divisible_4_or_7(number: int) -> bool:
+        return (number % 4 == 0 or number % 7 == 0)
+
+def divisble_4_and_7(number: int) -> bool:
+        return (number % 4 == 0 and number % 7 ==0)
+
+number = int(input('Give me a number between 1 and 1,000,000,000: '))
+
+div_by_4_or_7 = divisible_4_or_7(number)
+div_by_4_and_7 = divisble_4_and_7(number)
+
+if div_by_4_or_7:
+        print(f'{number} is divisible by 4 or 7.')
+else:
+        print(f'{number} is not divisible by 4 or 7.')
+
+if div_by_4_and_7:
+        print(f'{number} is divisible by 4 and 7.')
+else:
+        print(f'{number} is not divisible by 4 and 7.')
+

@@ -3,7 +3,18 @@
 # You shouldn't explicitly access the dict values, but use
 # dictionary unpacking when passing the argument instead.
 
-def congratulate(name, age):
-    return f"Today {name} is {age} years old.\nHappy Birthday!"
+""" def congratulate(user: dict):
+    return f"Today {user['name']} is {user['age']} years old.\nHappy Birthday!"
 
 user = {"name": "Adelheid", "age": 22}
+
+print(congratulate(user)) """
+
+def congratulate(name, age):
+    return f'Today {name} is {age} years old. \nHappy Birthday {name}!'
+
+user = {"name": "Adelheid", "age": 22}
+
+congrats = congratulate(**user)
+
+print(congrats)

@@ -9,9 +9,9 @@ def km_to_miles(km):
         km (float): distance in km
 
     Returns:
-        float: distance in miles
+        float: distance in km
     """
-    
+
     miles = km * 0.6
     return miles
 
