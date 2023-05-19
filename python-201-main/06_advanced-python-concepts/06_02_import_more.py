@@ -3,8 +3,9 @@
 # All the necessary variables and functions are
 # already defined in the `codingnomads/` folder.
 
+import codingnomads.ingredients as i
 
-
+import codingnomads.recipes.soup as s
 
 digestible = i.prepare(i.potato)
 mix = i.carrot + i.potato + i.salt
