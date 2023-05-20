@@ -7,7 +7,7 @@ sorted_list = [('second_element', 2), ('first_element', 4), ('third_element', 6)
 
 '''
 
-unsorted_list = [('first_element', 4), ('second_element', 6), ('third_element', 6)]
+unsorted_list = [('first_element', 4), ('second_element', 2), ('third_element', 6)]
 sorted_list = []
 
 value_list = []
@@ -16,6 +16,7 @@ for tuple_ in unsorted_list:
 
 print(value_list)
 value_list.sort()
+
 #will this work if multiple elements have the same value?
 
 for value in value_list:

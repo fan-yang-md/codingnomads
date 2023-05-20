@@ -10,3 +10,7 @@
 
 s = {1, 2, 3, 4}
 t = {2, 3, 4, 5, 7}
+#print(s|t)
+set = {number**2 for number in s|t if number>2}
+print(set)
+#loop = {for number in }
