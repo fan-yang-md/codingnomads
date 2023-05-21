@@ -4,7 +4,12 @@
 
 def my_enumerate(list):  # add your arguments
       # add your code implementation
-      for index, item in enumerate(list, start=1): #start index at '1' instead of the default '0'
-            return(index, item)
+      element_index_list = []
+      for item in list:
+            tuple_ = (item, list.index(item)+1)
+            element_index_list.append(tuple_)
+      return element_index_list
+print(my_enumerate([1, 2, 3, 4, 5, 6]))
+
 
 
