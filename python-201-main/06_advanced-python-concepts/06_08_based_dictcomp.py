@@ -23,6 +23,7 @@ complete_dict = {}
 
 # print(complete_dict)
 
+##DOES NOT WORK
 for x in list_:
     map_binary = [x//2**9,int(x/2)//2**8,int(x/4)//2**7,int(x/8)//2**6,int(x/16)//2**5,int(x/32)//2**4,int(x/64)//2**3,int(x/128)//2**2,int(x/256)//2,int(x/512)//2]
     complete_dict[x] = map_binary
