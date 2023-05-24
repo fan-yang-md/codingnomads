@@ -10,3 +10,19 @@
 #
 # Model such an application form as a Python class below, and instantiate
 # a few objects from it.
+class Patient:
+    def __init__(self, name, age, gender):
+        self.name = name
+        self.age = age
+        self.gender = gender
+    
+    def __str__(self) -> str:
+        return f'Our patient {self.name} is a {self.age} year old {self.gender}.'
+
+    def __repr__(self) -> str:
+        return f'Patient(name = {self.name}, age = {self.age}, gender = {self.gender})'
+    
+pat = Patient('Patrick', 30, 'male')
+
+print(pat)
+print(repr(pat))
