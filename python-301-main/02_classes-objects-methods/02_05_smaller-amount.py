@@ -25,6 +25,7 @@ class Ingredient:
         """Combines two ingredients."""
         new_name = self.name + other.name
         new_amount = 0
+        #Makes the new amount the lesser amount of the two ingredients.
         if self.amount < other.amount:
             new_amount = self.amount
         else:
