@@ -34,7 +34,7 @@ class Pokemon:
                 return f'{enemy.name} loses 10 hp and has {enemy.hp} hp left.'
             elif enemy.primary_type == 'earth':
                 self.hp -= 10
-                return f'{self.name} loses 10 hp and have {self.hp} hp left.'
+                return f'{self.name} loses 10 hp and has {self.hp} hp left.'
 
         elif self.primary_type == 'fire':
             if enemy.primary_type == 'earth':
@@ -42,7 +42,7 @@ class Pokemon:
                 return f'{enemy.name} loses 10 hp and has {enemy.hp} hp left.'
             elif enemy.primary_type == 'water':
                 self.hp -= 10
-                return f'{self.name} loses 10 hp and have {self.hp} hp left.'
+                return f'{self.name} loses 10 hp and has {self.hp} hp left.'
         
         elif self.primary_type == 'earth':
             if enemy.primary_type == 'water':
@@ -50,11 +50,14 @@ class Pokemon:
                 return f'{enemy.name} loses 10 hp and has {enemy.hp} hp left.'
             elif enemy.primary_type == 'fire':
                 self.hp -= 10
-                return f'{self.name} loses 10 hp and have {self.hp} hp left.'
+                return f'{self.name} loses 10 hp and has {self.hp} hp left.'
     
     def feed(self):
-        self.hp += 20
-        return f"{self.name}'s hp is now recovered to {self.hp}."
+        if self.hp +20 < self.max_hp:
+            self.hp += 20
+        else:
+            self.hp = self.max_hp
+        print(f"{self.name} was fed and their hp is now recovered to {self.hp}.")
     
     def __str__(self) -> str:
         return f'Name: {self.name}\nType: {self.primary_type}\nMax HP: {self.max_hp}\nCurrent HP:{self.hp}'
