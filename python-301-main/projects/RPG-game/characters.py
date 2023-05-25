@@ -35,30 +35,30 @@ class Hero:
 ## HERO ATTACK FUNCTION
     def hero_attack(self, monster):
         # battle commences...hero has the surprise advantage.
-        print(f'You sneak up and attack {monster.name}!!\n... ...')
+        print(f'You sneak up and attack {monster.name}!!\n... ...\n')
         time.sleep(2)
         hero_dice_roll = random.randint(5, 10) * self.level + self.damage + random.randint(1, 5) * self.pet_level
         monster_dice_roll = random.randint(1, 10) * monster.level + monster.defense
 
         if hero_dice_roll > monster_dice_roll: # hero wins the battle
-            print(f'You slay the monster {monster.name}!!\n... ...')
+            print(f'You slay the monster {monster.name}!!\n... ...\n')
             time.sleep(2)
-            print(f'and find {monster.treasure} on their body.')
+            print(f'and find {monster.treasure} on their body.\n')
             time.sleep(1)
             if 'armor' in monster.treasure:
                 self.defense += monster.treasure['armor']
             if 'sword' in monster.treasure:
-                self.defense += monster.treasure['sword']
+                self.damage += monster.treasure['sword']
             if 'gold' in monster.treasure:
                 self.gold += monster.treasure['gold']
 
             if monster.level - self.level > 2:
                 self.level += 2
-                print(f'You have leveled up to: Level {self.level}! Strong work!')
+                print(f'You have leveled up to: Level {self.level}! Strong work!\n')
 
             elif monster.level - self.level >= 0:
                 self.level += 1
-                print(f'You have leveled up to: Level {self.level}! Strong work!')
+                print(f'You have leveled up to: Level {self.level}! Strong work!\n')
 
             time.sleep(2)
             print(self)
@@ -67,31 +67,39 @@ class Hero:
             return True #return true only if hero slays monster.
 
         else: # hero doesn't slay and monster counter attacks
-            print(f'A heroic effort, however the monster stands and has become enraged...and counter attacks!')
+            print(f'A heroic effort, however the monster stands and has become enraged...and counter attacks!\n')
+            if self.defense < monster.damage:
+                self.hp = self.hp + self.defense - monster.damage
+                if self.hp > 0:
+                    print(f'You have {self.hp} HP remaining...\n')
+                else:
+                    print(f'You have succumbed to your wounds...\nGOOD GAME!\n')
+                    exit()
             time.sleep(2)
+
             # 2nd round commences. This time the monster holds the advantage.
             hero_dice_roll = random.randint(1, 10) * self.level + self.damage + random.randint(1, 5) * self.pet_level
             monster_dice_roll = random.randint(5, 10) * monster.level + monster.defense
 
-            if hero_dice_roll > monster_dice_roll:
-                print(f'You finally slay the monster {monster.name}!!\n... ...')
+            if hero_dice_roll > monster_dice_roll: # hero wins in the counter attack
+                print(f'You finally slay the monster {monster.name}!!\n... ...\n')
                 time.sleep(2)
-                print(f'and find {monster.treasure} on their body.')
+                print(f'and find {monster.treasure} on their body.\n')
                 time.sleep(1)
                 if 'armor' in monster.treasure:
                     self.defense += monster.treasure['armor']
                 if 'sword' in monster.treasure:
-                    self.defense += monster.treasure['sword']
+                    self.damage += monster.treasure['sword']
                 if 'gold' in monster.treasure:
                     self.gold += monster.treasure['gold']
 
                 if monster.level - self.level > 2:
                     self.level += 2
-                    print(f'You have leveled up to: Level {self.level}! Strong work!')
+                    print(f'You have leveled up to: Level {self.level}! Strong work!\n')
 
                 elif monster.level - self.level >= 0:
                     self.level += 1
-                    print(f'You have leveled up to: Level {self.level}! Strong work!')
+                    print(f'You have leveled up to: Level {self.level}! Strong work!\n')
 
                 time.sleep(2)
                 print(self)
@@ -99,36 +107,35 @@ class Hero:
                 time.sleep(2)
                 return True #return true only if hero slays monster.
             
-            # if self.defense < monster.damage:
-            #     self.hp = self.hp + self.defense - monster.damage
-            #     if self.hp > 0:
-            #         print(f'You have {self.hp} HP remaining...\n')
-            #         time.sleep(2)
-            #     else:
-            #         print(f'You have succumbed to your wounds...\nGOOD GAME!')
-            #         time.sleep(2)
-            #         exit()
-            # else:
-            #     print("There is not a scratch on you! Next time you'll have no trouble with it!")
-            #     time.sleep(2)
-            
-            # return False ##return false if the monster still lives.
+            else: # hero again does not slay the monster.
+                print(f'You are certainly a force to reckon with!\nThe monster retreats into the darkness to lick its wounds...next time no doubt!\n')
+                time.sleep(2)
+
+                if self.defense < monster.damage:
+                    self.hp = self.hp + self.defense - monster.damage
+                    if self.hp > 0:
+                        print(f'You have {self.hp} HP remaining...\n')
+                    else:
+                        print(f'You have succumbed to your wounds...\nGOOD GAME!\n')
+                        exit()
+                
+                return False #returns false if the monster still lives.
 
     
 ## ADPOT A PET
     def adopt(self, pet):
         if self.pet_level > 0:
             pet_choice = input(f'You already have a pet. Would you like to replace\
- {self.pet_name} with {pet.name}? Enter "y" to replace, or any other key to keep {self.pet_name}.')
+ {self.pet_name} with {pet.name}? Enter "y" to replace, or any other key to keep {self.pet_name}:  ')
             if pet_choice.lower() == "y":
                 self.pet_name = pet.name
                 self.pet_level = pet.level
                 pet.boost(self)
-                print('Wonderful! Now you have a new pet!')
+                print('Wonderful! Now you have a new pet!\n')
                 print(self)
                 print(pet)
         else:
-            print('Congrats! Now you have a pet! What a wonderful surprise from the forest!')
+            print('Congrats! Now you have a pet! What a wonderful surprise from the forest!\n')
             self.pet_name = pet.name
             self.pet_level = pet.level
             pet.boost(self)
@@ -153,54 +160,54 @@ class Monster:
     Defense: {self.defense}\n\
 '
 
-    def counter_attack(self, hero):
+    # def counter_attack(self, hero):
 
-        print(f'{self.name} makes an counter-attack at You!!\n... ...')
-        time.sleep(2)
-        monster_dice_roll = random.randint(1, 10) * self.level + self.damage
-        hero_dice_roll = random.randint(1, 10) * hero.level + hero.defense
+    #     print(f'{self.name} makes an counter-attack at You!!\n... ...')
+    #     time.sleep(2)
+    #     monster_dice_roll = random.randint(1, 10) * self.level + self.damage
+    #     hero_dice_roll = random.randint(1, 10) * hero.level + hero.defense
 
-        if hero_dice_roll > monster_dice_roll:
-            print(f'You finally slat the monster {self.name}!!\n... ...')
-            time.sleep(2)
-            print(f'and find {self.treasure} on their body.')
+    #     if hero_dice_roll > monster_dice_roll:
+    #         print(f'You finally slat the monster {self.name}!!\n... ...')
+    #         time.sleep(2)
+    #         print(f'and find {self.treasure} on their body.')
 
-            if 'armor' in self.treasure:
-                hero.defense += self.treasure['armor']
-            if 'sword' in self.treasure:
-                hero.defense += self.treasure['sword']
-            if 'gold' in self.treasure:
-                hero.gold += self.treasure['gold']
+    #         if 'armor' in self.treasure:
+    #             hero.defense += self.treasure['armor']
+    #         if 'sword' in self.treasure:
+    #             hero.defense += self.treasure['sword']
+    #         if 'gold' in self.treasure:
+    #             hero.gold += self.treasure['gold']
 
-            time.sleep(1)
+    #         time.sleep(1)
 
-            if hero.level - self.level > 2:
-                hero.level += 2
-                print(f'You have leveled up to: Level {hero.level}! Strong work!')
+    #         if hero.level - self.level > 2:
+    #             hero.level += 2
+    #             print(f'You have leveled up to: Level {hero.level}! Strong work!')
 
-            elif hero.level - self.level >= 0:
-                hero.level += 1
-                print(f'You have leveled up to: Level {hero.level}! Strong work!')
+    #         elif hero.level - self.level >= 0:
+    #             hero.level += 1
+    #             print(f'You have leveled up to: Level {hero.level}! Strong work!')
 
-            time.sleep(1)
-            print("Let's see what else lurks in the forest!")
-            time.sleep(1)
-            return True #returns true when hero slays monster
+    #         time.sleep(1)
+    #         print("Let's see what else lurks in the forest!")
+    #         time.sleep(1)
+    #         return True #returns true when hero slays monster
 
-        else:
-            print(f'Monster retreats into the darkness to lick its wounds...next time no doubt!')
-            time.sleep(2)
+    #     else:
+    #         print(f'Monster retreats into the darkness to lick its wounds...next time no doubt!')
+    #         time.sleep(2)
 
-            if hero.defense < self.damage:
-                hero.hp = hero.hp + hero.defense - self.damage
-                if hero.hp > 0:
-                    print(f'You have {hero.hp} HP remaining...\n')
-                else:
-                    print(f'You have succumbed to your wounds...\nGOOD GAME!')
-                    exit()
-            time.sleep(1)
+    #         if hero.defense < self.damage:
+    #             hero.hp = hero.hp + hero.defense - self.damage
+    #             if hero.hp > 0:
+    #                 print(f'You have {hero.hp} HP remaining...\n')
+    #             else:
+    #                 print(f'You have succumbed to your wounds...\nGOOD GAME!')
+    #                 exit()
+    #         time.sleep(1)
 
-            return False #returns false if the monster still lives.
+    #         return False #returns false if the monster still lives.
 
 class Pet:
     def __init__(self, name, level, damage, defense) -> None:
@@ -226,28 +233,38 @@ class NPC:
     def __str__(self):
         return f'NPC info:\n  Name: {self.name}\n  Goods for sale: {self.goods}'
     def sell(self, hero):
+        purchase = input(f'You have {hero.gold} gold pieces. What would you like to pay for? Enter 1 for "Armor Repair",\
+ 2 for "Weapon Repair", 3 for "Health Potion", or any other key to leave shop:  ')
         while True:
-            purchase = input(f'Our hero has {hero.gold} gold pieces. What would you like to pay for? Enter 1 for "Armor Repair",\
- 2 for "Weapon Repair", 3 for "Health Potion", or 4 to leave shop.')
             if purchase == '1':
                 item = 'armor repair'
             elif purchase == '2':
-                item == 'weapon repair'
+                item = 'weapon repair'
             elif purchase == '3':
-                item == 'health potion'
-            elif purchase == '4':
+                item = 'health potion'
+            else:
+                print('NPC gives you the finger!')
                 return False
+            time.sleep(2)
             if hero.gold >= self.goods[item]:
                 hero.gold -= self.goods[item]
+                print(f'That will cost ya {self.goods[item]} pieces of gold. You have {hero.gold} gold pieces remaining.')
                 if item == 'armor repair':
                     hero.defense += 100
+                    print('Congrats! +100 Defense.')
                 if item == 'weapon repair':
                     hero.damage += 100
+                    print('Congrats! +100 Damage.')
                 if item == 'health potion':
                     hero.hp += 500
+                    print('Congrats! +500 HP.')
+                    purchase = input(f'You have {hero.gold} gold pieces remaining. Something else?\
+Enter 1 for "Armor Repair", \
+2 for "Weapon Repair", \
+3 for "Health Potion", \
+or any other key to leave shop:  ')
                 return True
             else:
-                print("That is not enough gold, you poor bastard! Now get out!")
+                print("That is not enough gold, you poor bastard! Now get out!\n")
+                time.sleep(2)
                 return False
-        print("Let's see what else is out there.")
-        time.sleep(2)

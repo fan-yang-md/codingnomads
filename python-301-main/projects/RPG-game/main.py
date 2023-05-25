@@ -25,37 +25,35 @@ def play_game():
         NPC(name='NPC', goods={'armor repair': 10, 'weapon repair': 10, 'health potion':5}),
         Pet(name='Dragon', level=10, damage=100, defense=100),
         Pet(name='Wolf', level=5, damage=50, defense=30),
-        Pet(name='Cougar', level=7, damage=70, defense=40),
-        Pet(name='Panda', level=1, damage=1,defense=1),
+        Pet(name='Panda Bear', level=1, damage=1,defense=1),
         Pet(name='German Shepherd', level=5, damage=40, defense=40),
         Pet(name='Aussie', level=4, damage=30, defense=30),
-        Pet(name='Golden doodle', level=2, damage=20, defense=10),
-        Monster(name='Gargoyle', level=50, damage=500,defense=500,treasure={'armor':1000, 'sword':1000, 'gold':100}),
-        Monster(name='Gargoyle', level=50, damage=500,defense=500,treasure={'armor':1000, 'sword':1000, 'gold':100}),
-        Monster(name='The Toad Prince', level=40, damage=400, defense=400, treasure={'armor':800, 'sword':400, 'gold':50}),
-        Monster(name='The Toad Prince', level=40, damage=400, defense=400, treasure={'armor':800, 'sword':400, 'gold':50}),
-        Monster(name='Fiend', level=20, damage=200, defense=100, treasure={'armor':100, 'sword':100, 'gold':10}),
-        Monster(name='Basilisk', level=10, damage=100, defense=100, treasure={'armor':50, 'sword':50, 'gold':5}),
-        Monster(name='Werewolf', level=20, damage=200, defense=300, treasure={'armor':300, 'sword':100, 'gold':10}),
-        Monster(name='Vampire', level=30, damage=300, defense=200, treasure={'armor':300, 'sword':500, 'gold':30}),
-        Monster(name='Vampire', level=30, damage=300, defense=200, treasure={'armor':300, 'sword':500, 'gold':30}),
-        Monster(name='Vampire', level=30, damage=300, defense=200, treasure={'armor':300, 'sword':500, 'gold':30}),
-        Monster(name='Giant Centipede', level=5, damage=50, defense=100, treasure={'armor':50, 'gold':3}),
-        Monster(name='Giant Centipede', level=5, damage=50, defense=100, treasure={'armor':50, 'gold':3}),
-        Monster(name='Lost Soul', level=1, damage=10, defense=0, treasure={'gold':5}),
-        Monster(name='Lost Soul', level=1, damage=10, defense=0, treasure={'gold':5}),
-        Monster(name='Lost Soul', level=1, damage=10, defense=0, treasure={'gold':5}),
-        Monster(name='Lost Soul', level=1, damage=10, defense=0, treasure={'gold':5}),
-        Monster(name='Lost Soul', level=1, damage=10, defense=0, treasure={'gold':5})
+        Monster(name='Gargoyle', level=50, damage=500,defense=500,treasure={'armor':100, 'gold':10}),
+        Monster(name='Gargoyle', level=50, damage=500,defense=500,treasure={'armor':100, 'gold':10}),
+        Monster(name='The Toad Prince', level=40, damage=400, defense=400, treasure={'armor':80, 'gold':5}),
+        Monster(name='The Toad Prince', level=40, damage=400, defense=400, treasure={'armor':80, 'gold':5}),
+        Monster(name='Fiend', level=20, damage=200, defense=100, treasure={'armor':10, 'sword':10, 'gold':2}),
+        Monster(name='Basilisk', level=10, damage=100, defense=100, treasure={'armor':5, 'sword':5, 'gold':1}),
+        Monster(name='Werewolf', level=20, damage=200, defense=300, treasure={'armor':30, 'gold':2}),
+        Monster(name='Vampire', level=30, damage=300, defense=200, treasure={'sword':50, 'gold':3}),
+        Monster(name='Vampire', level=30, damage=300, defense=200, treasure={'sword':50, 'gold':3}),
+        Monster(name='Vampire', level=30, damage=300, defense=200, treasure={'sword':50, 'gold':3}),
+        Monster(name='Giant Centipede', level=5, damage=50, defense=100, treasure={'armor':5}),
+        Monster(name='Giant Centipede', level=5, damage=50, defense=100, treasure={'armor':5}),
+        Monster(name='Lost Soul', level=1, damage=10, defense=0, treasure={'gold':1}),
+        Monster(name='Lost Soul', level=1, damage=10, defense=0, treasure={'gold':1}),
+        Monster(name='Lost Soul', level=1, damage=10, defense=0, treasure={'gold':1}),
+        Monster(name='Lost Soul', level=1, damage=10, defense=0, treasure={'gold':1}),
+        Monster(name='Lost Soul', level=1, damage=10, defense=0, treasure={'gold':1})
     ]
 
-    hero = Hero(name=input("Please enter our hero's name:  "), hp=500,level=30,pet_name='',pet_level=0,damage=500,defense=500,gold=0)
+    hero = Hero(name=input("Please enter our hero's name:  "), hp=500,level=30,pet_name='',pet_level=0,damage=300,defense=300,gold=0)
     time.sleep(1)
     print(f'Welcome {hero.name}!!! We await your good news! Please take care!')
 
     time.sleep(1)
 
-    print("So you head directly into the depth of the forest...")
+    print("So you head directly for the depth of the forest...")
     time.sleep(2)
 
     while True:
@@ -66,12 +64,18 @@ Would you like to get closer?\nEnter "y" to interact, any other key to avoid:  '
         
         if choice == 'y':
             if isinstance(current_interaction, Monster):
+                print("It is a scary monster!")
                 print(current_interaction)
                 choice = input(f'Would you like to attack?\nEnter "y" to attack, or any other key to retreat:  ').lower()
                 if choice == 'y':
                     hero_slays = hero.hero_attack(current_interaction)
-                    if hero_slays == False:
-                        current_interaction.counter_attack(hero)
+                    if hero_slays == True:
+                        interactions.remove(current_interaction)
+
+                        # for character in interactions:
+                        #     if isinstance(character, Monster):
+                        #         return True # there are still monsters out there
+                        # return False # no monsters left
                 else:
                     print("You are a cautious one! Let's see what else is out here!")
                     time.sleep(2)
@@ -88,6 +92,6 @@ Would you like to get closer?\nEnter "y" to interact, any other key to avoid:  '
                 choice = input(f'Would you like to enter the shop?\nEnter "y" to enter, or any other key to walk away:  ').lower()
                 if choice == 'y':
                     current_interaction.sell(hero)
-            
+
 if __name__ == '__main__':
     main()
