@@ -6,4 +6,7 @@ file_1 = "operators.pdf"
 file_2 = "snowfall.jpg"
 file_3 = "uncle-joes-wedding.doc"
 file_4 = "invitation.pdf"
-print(file_1.endswith('pdf'))
+
+list = {file_1, file_2, file_3, file_4}
+for file in list:
+    print(f"Is {file} a pdf file? : {file.endswith('.pdf')}")

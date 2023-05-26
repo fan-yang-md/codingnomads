@@ -1,3 +1,5 @@
+# Bulding a Kitchen() using composition rather than inheritance
+
 # Define a class for a stove
 class Stove:
     def __init__(self, num_burners):

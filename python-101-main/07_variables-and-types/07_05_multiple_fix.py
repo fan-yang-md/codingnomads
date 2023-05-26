@@ -3,3 +3,7 @@
 # Declared like this, it's easy to mix which is which.
 
 dreams, profession = "flying", "programming"
+
+print(dreams)
+
+print(profession)

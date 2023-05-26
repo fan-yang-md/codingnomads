@@ -22,7 +22,7 @@ def print_welcome():
 
 def play_game():
     interactions = [
-        NPC(name='NPC', goods={'armor repair': 10, 'weapon repair': 10, 'health potion':5}),
+        NPC(name='NPC', goods={'armor repair': 10, 'weapon repair': 10, 'health potion': 5}),
         Pet(name='Dragon', level=10, damage=100, defense=100),
         Pet(name='Wolf', level=5, damage=50, defense=30),
         Pet(name='Panda Bear', level=1, damage=1,defense=1),

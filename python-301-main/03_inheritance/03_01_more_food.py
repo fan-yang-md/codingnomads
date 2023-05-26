@@ -21,12 +21,21 @@ class Ingredient:
 
 class Spice(Ingredient):
     """Models a spice to flavor your food."""
+    def __init__(self, name, amount, taste):
+        super().__init__(name, amount)
+        self.taste = taste
 
     def grind(self):
         print(f"You have now {self.amount} of ground {self.name}.")
 
     def expire(self):
         print(f'The {self.name} has expired but it is probably still good.')
+
+class Vegetable(Ingredient):
+
+    def __init__(self, name, amount, flavor):
+        super().__init__(name, amount)
+        self.flavor = flavor
 
 s = Spice('salt', 200)
 print(s)

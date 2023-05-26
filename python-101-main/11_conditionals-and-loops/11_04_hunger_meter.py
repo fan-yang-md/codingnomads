@@ -7,9 +7,13 @@
 
 hunger = 2
 
-if hunger == "big":
-    print("Eat the pizza")
-elif hunger == "small":
-    print("Eat the apple")
+if isinstance(hunger, str):
+    if hunger == "big":
+        print("Eat the pizza")
+    elif hunger == "small":
+        print("Eat the apple")
+    else:
+        print("Don't eat anything")
+
 else:
-    print("Don't eat anything")
+    print("remember remember the 5th of november!")

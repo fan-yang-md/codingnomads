@@ -25,7 +25,7 @@ class RomCom(Movie):
 class ActionMovie(Movie):
     def __init__(self, year, title, director, star) -> None:
         super().__init__(year, title, director, star)
-        self.pg = 'PG13'
+        self.pg = 'PG 13'
 
     def __str__(self) -> str:
         return super().__str__() + f' Rating: {self.pg}'
@@ -34,5 +34,5 @@ class ActionMovie(Movie):
 #     Take notes in your notebook. What other attributes could a `Movie()` class
 #     contain? What methods? What should the child classes inherit as-is or overwrite?
 
-rambo = ActionMovie(1986, 'Rambo: First Blood', "Ted Kotcheff", "Sylvester Stallone")
+rambo = ActionMovie(1982, 'Rambo: First Blood', "Ted Kotcheff", "Sylvester Stallone")
 print(rambo)
