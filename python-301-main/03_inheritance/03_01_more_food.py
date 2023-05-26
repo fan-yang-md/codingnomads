@@ -25,3 +25,13 @@ class Spice(Ingredient):
     def grind(self):
         print(f"You have now {self.amount} of ground {self.name}.")
 
+    def expire(self):
+        print(f'The {self.name} has expired but it is probably still good.')
+
+s = Spice('salt', 200)
+print(s)
+
+s.grind()
+print(s)
+
+s.expire()

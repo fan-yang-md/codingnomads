@@ -11,12 +11,12 @@ def print_welcome():
     ~~~~~~~~~~~~~~~~~~~~~
     Here you are! We have heard much of you! Indeed you are quite the sight to behold!
     We hear you have traveled here from the farthest corner of Barren Sea,
-    an immensely impressive feat in itself, a tale that we must hear over many ales soon!
+    an immensely impressive feat in itself, a tale that we must hear over our finest ale...soon!
     For now, time is of the uttmost essence! As you know, monsters lurk in the forests...
     beyond our village's weak defenses. What they are and how many...that we do not know.
-    They are venturing closers and closer to our village to feed...if...if...
+    They are venturing closers and closer to our village to feed...we are fearful!
     
-    Please help us!
+    Please help us! You will be graciously rewarded!
     ~~~~~~~~~~~~~~~~~~~~~
 """)
 
@@ -71,7 +71,8 @@ Would you like to get closer?\nEnter "y" to interact, any other key to avoid:  '
                     hero_slays = hero.hero_attack(current_interaction)
                     if hero_slays == True:
                         interactions.remove(current_interaction)
-
+                        
+                        #DOES NOT WORK
                         # for character in interactions:
                         #     if isinstance(character, Monster):
                         #         return True # there are still monsters out there

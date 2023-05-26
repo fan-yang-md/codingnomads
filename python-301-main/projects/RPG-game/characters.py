@@ -248,22 +248,23 @@ class NPC:
             time.sleep(2)
             if hero.gold >= self.goods[item]:
                 hero.gold -= self.goods[item]
-                print(f'That will cost ya {self.goods[item]} pieces of gold. You have {hero.gold} gold pieces remaining.')
+                print(f'That will cost ya {self.goods[item]} pieces of gold.')
                 if item == 'armor repair':
                     hero.defense += 100
                     print('Congrats! +100 Defense.')
-                if item == 'weapon repair':
+                elif item == 'weapon repair':
                     hero.damage += 100
                     print('Congrats! +100 Damage.')
-                if item == 'health potion':
+                elif item == 'health potion':
                     hero.hp += 500
                     print('Congrats! +500 HP.')
-                    purchase = input(f'You have {hero.gold} gold pieces remaining. Something else?\
+
+                purchase = input(f'You have {hero.gold} gold pieces remaining. Something else?\
 Enter 1 for "Armor Repair", \
 2 for "Weapon Repair", \
 3 for "Health Potion", \
 or any other key to leave shop:  ')
-                return True
+                
             else:
                 print("That is not enough gold, you poor bastard! Now get out!\n")
                 time.sleep(2)
