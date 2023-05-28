@@ -22,3 +22,15 @@
 # * * *
 #
 # HINT: Think of nested for loops!
+
+n = input('gimme a number between 0 and 10: ')
+m = 1
+star = '*'
+if n.isnumeric():
+    n = int(n)
+    while m <= n :
+        print(star*m)
+        m+=1
+    
+else:
+    print(' :( you do not follow directions well.')

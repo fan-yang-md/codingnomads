@@ -14,4 +14,5 @@ count = 0
 for char in lorem_ipsum:
     if char in vowels:
         count+=1
+        
 print(f'There are {count} vowels in the text.')
