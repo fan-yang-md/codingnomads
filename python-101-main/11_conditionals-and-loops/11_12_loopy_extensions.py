@@ -7,7 +7,7 @@
 # Remember to use also other techniques you've learned,
 # for example flags and conditional statements.
 
-filename = "operators.pdff"
+filename = "operators.pdf"
 is_pdf = False
 for n in range(len(filename)):
     if filename[n] == 'p' and filename[n+1]=='d' and filename[n+2]=='f':

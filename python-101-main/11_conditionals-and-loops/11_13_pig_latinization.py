@@ -106,6 +106,9 @@ there it was, the biggest, ugliest, hairiest creature I've ever seen in my life!
 a monstrous omelette with eyes that seemed to change colours as it breathed. As I stared at the omelette, facing the possibility of death, I couldn't help but think that this was all part of some sick plan orchestrated by Plotters.
 """
 
+
+### Dont know what to do about all the non-alphabet characters?!
+
 list = story.split()
 
 print(list)

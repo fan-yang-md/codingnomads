@@ -21,3 +21,10 @@ class Ingredient:
             print("Failed to open the web page.")
 
 
+class Spice(Ingredient):
+    def __init__(self, name, amount, flavor):
+        super().__init__(name, amount)
+        self.flavor = flavor
+    def __str__(self):
+        return super().__str__() + f'\nFlavor ({self.flavor})'
+    

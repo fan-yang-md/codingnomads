@@ -37,7 +37,7 @@ class Vegetable(Ingredient):
         super().__init__(name, amount)
         self.flavor = flavor
 
-s = Spice('salt', 200)
+s = Spice('salt', 200, 'salty')
 print(s)
 
 s.grind()
