@@ -9,15 +9,14 @@ from pathlib import Path
 class PrinceException(Exception):
     pass
 
-def prince_check(book_list):
-    for book in book_list:
-        with open(folder_path.joinpath(book), 'r', errors='ignore') as book_:
-            book_string = book_.read()
-            #print(book_string[:100])
-            if 'prince' in book_string[:100]:
-                raise PrinceException(f'found an exceptional prince in {book}')
-            else:
-                print(f'no exceptional prince to be found in {book}')
+def prince_check(book):
+    with open(folder_path.joinpath(book), 'r', errors='ignore') as book_:
+        book_string = book_.read()
+#       print('*****\n'+ book_string[:100]+'\n')
+        if 'prince' in book_string[:100].lower():
+            raise PrinceException(f'YAY! Found an exceptional prince in {book}\n')
+        else:
+            print(f'No exceptional prince to be found in {book}\n')
 
 folder_path = Path('C:/Users/13392/Documents/codingnomads/python-301-main/05_exceptions/books')
 
@@ -27,4 +26,9 @@ pride_ = 'pride_and_prejudice.txt'
 
 book_list = [war_, crime_, pride_]
 
-prince_check(book_list)
+for book in book_list:
+    try:
+        prince_check(book)
+
+    except PrinceException as p:
+        print(p)
