@@ -13,21 +13,20 @@ with open(filepath.joinpath(file_name), 'r') as file_:
     integer_list = list(file_.read().split())
     #print(integer_list)
 
-print(f'Here is list of numbers in the file: {integer_list}')
-print()
-print('we are dividing all the numbers by all the numbers in the list: ')
-print()
+print(f' \nHere is list of numbers in the file: {integer_list}')
 
-try:
-    for num in integer_list:
-        for divisor in integer_list:
+print(' \nwe are dividing all the numbers by all the numbers in the list: \n ')
+
+for num in integer_list:
+    for divisor in integer_list:
+        try: 
             print(f'{num}/{divisor} = {int(num)/int(divisor)}')
-except IOError as i:
-    print(i)
-except ZeroDivisionError as z:
-    print(f'{num}/{divisor}: Cannot divide by zero')
-except ValueError:
-    print(f'{num}/{divisor}: non-numerical values.')
+        except IOError as i:
+            print(i)
+        except ZeroDivisionError:
+            print(f'{num}/{divisor}: Cannot divide by zero')
+        except ValueError:
+            print(f'{num}/{divisor}: non-numerical values.')
 
 
 
