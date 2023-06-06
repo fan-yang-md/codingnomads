@@ -1,12 +1,5 @@
-class AgeBelowZeroError(Exception): pass
+x = 0
+for i in range(1,4):
+    x += (4*i**2+2*i+6)**2
 
-try:
-    age = int(input("Age: "))
-    if age < 0:
-        raise AgeBelowZeroError()
-except ValueError:
-    print("Please enter a numeric value.")
-except AgeBelowZeroError:
-    print("Looks like you've not been born yet.")
-else:
-    print(f"Congratulations, you're {age} years old!")
+print(x)
