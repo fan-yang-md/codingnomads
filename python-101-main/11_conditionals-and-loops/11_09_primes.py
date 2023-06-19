@@ -11,3 +11,5 @@ for num in range(1,1001):
         list.append(num)
 
 print(list)
+
+print(len(list))
